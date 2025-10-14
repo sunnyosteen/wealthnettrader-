@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Transactions | {{ user.username|capfirst }}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Floating Dashboard Button Styles */
+        .floating-btn {
+            position: fixed; /* Keeps the button fixed in place */
+            top: 0px; /* Stays at the top of the screen */
+            right: 3px; /* Distance from the right */
+            padding: 15px 30px; /* Adds padding inside the button */
+            background: linear-gradient(107deg, #f0a, #9c42f5 53%, #5d2de1); /* Initial gradient background */
+            color: white; /* Text color */
+            font-size: 18px; /* Font size */
+            text-decoration: none; /* Remove the underline from the link */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow for better visibility */
+            z-index: 999; /* Ensures the button is above other content */
+            transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for color change */
+        }
+
+        .floating-btn:hover {
+            position: fixed; /* Keeps the button fixed in place */
+            top: 0px; /* Stays at the top of the screen */
+            right: 3px; /* Distance from the right */
+            padding: 15px 30px; /* Adds padding inside the button */
+            background: linear-gradient(107deg, #f0a, #9c42f5 53%, #5d2de1); /* Initial gradient background */
+            color: white; /* Text color */
+            font-size: 18px; /* Font size */
+            text-decoration: none; /* Remove the underline from the link */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow for better visibility */
+            z-index: 999; /* Ensures the button is above other content */
+            transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for color change */
+        }
+
+        .floating-btn:active {
+            opacity: 0.8; /* Optional: Adds hover effect when clicked */
+        }
+
+            /* Scroll to Top Button */
+        .scroll-to-top-btn {
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* 20px from the bottom */
+            right: 20px; /* 20px from the right */
+            background: transparent; /* Make background transparent */
+            color: white;
+            font-size: 30px; /* Increase size of the icon */
+            cursor: pointer;
+            box-shadow: none; /* Remove shadow */
+            z-index: 999;
+            transition: background-color 0.3s ease;
+        }
+
+        .scroll-to-top-btn:hover {
+            background-color: rgba(0, 0, 0, 0.1); /* Light background on hover */
+        }
+
+        .scroll-to-top-btn i {
+            color: #5d2de1; /* Arrow color */
+        }
+
+
+        /* Media Query for Small Screen Sizes */
+        @media (max-width: 768px) {
+            .scroll-to-top-btn {
+                padding: 12px;
+                font-size: 22px; /* Slightly smaller icon on small screens */
+            }
+
+            .floating-btn {
+                top: 0px; /* Keep at the top even on small screens */
+                right: 10px; /* Ensure there's space from the edge */
+                padding: 12px 24px; /* Adjust padding for better fit */
+                font-size: 16px; /* Slightly smaller font size */
+            }
+        }
+
+
+
+        .print-btn{
+                        font-size:20px;
+                        line-height: 16.78px;
+                        font-weight: 500;
+                        border-radius: 4px;
+                        padding: 10px 10px;
+                        color: #ffffff;
+                        /* background-color: #2D60FF; */
+                        background: linear-gradient(107deg, #f0a, #9c42f5 53%, #5d2de1);
+                        cursor: pointer;
+                        border: none;
+                        margin-top: 6px;
+                  }
+    </style>
+
+
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</head>
+<body>
+
+{% block content %}
+    <section class="header">
+        <div class="header-wrapper">
+            <div class="header-wrapper-1">
+                <div class="header-wrapper-1-items">
+                    <h1>Transactions</h1>
+                </div>
+            </div>
+            <div class="header-wrapper-2">
+                <div class="header-wrapper-2-items">
+                    <form action="" method="">
+                        <section class="nav-search-bar">
+                            <input type="text" class="fa fa-search form-control" name="navSearch" id="navSearch1" placeholder="Search for something">
+                        </section>
+                    </form>
+                    <span class="nav-icons-box">
+                        <i class="fa fa-cog tab-icons" aria-hidden="true" style="color: #718EBF;"></i>
+                    </span>
+                    <span class="nav-icons-box">
+                        <i class="fa-regular fa-bell" style="color: #FE5C73; font-size: 30px;"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-container">
+        <div class="header-wrapper">
+            <div style="width: 100%; margin: 0; padding: 0;">
+                <h2 class="content-h2">Recent Transactions</h2>
+                <div id="AllTransactions" class="tabcontentrt">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Transaction ID</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for transaction in transactions %}
+                                    <tr>
+                                        <td>{{ transaction.id }}</td>
+                                        <td>{{ transaction.description }}</td>
+                                        <td>{{ transaction.transaction_type|title }}</td>
+                                        <td>{{ transaction.created_at|date:"d M, H:i A" }}</td>
+                                        <td>${{ transaction.amount }}</td>
+                                        <td>
+                                            {% if transaction.status == 'completed' %}
+                                                <span class="badge badge-success">Completed</span>
+                                            {% elif transaction.status == 'pending' %}
+                                                <span class="badge badge-warning">Pending</span>
+                                            {% elif transaction.status == 'approved' %}
+                                                <span class="badge badge-primary">Approved</span>
+                                            {% else %}
+                                                <span class="badge badge-danger">Failed</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                        <td colspan="6" class="text-center">No transactions found.</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Print Button -->
+    <div class="text-center">
+        <button class="print-btn" onclick="window.print()">Print to PDF</button>
+    </div>
+
+{% endblock %}
+
+<!-- Floating Dashboard Button -->
+<a href="{% url 'userprofile:dashboard' %}" class="floating-btn">
+    Dashboard
+</a>
+
+<!-- Scroll to Top Button -->
+<!-- Scroll to Top Button -->
+<button class="scroll-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="bi bi-arrow-up"></i> <!-- Arrow icon only -->
+</button>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
+</body>
+</html>
