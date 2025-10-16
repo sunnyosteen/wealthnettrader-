@@ -198,12 +198,13 @@
 
 <body class="font-sans bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex min-h-screen">
     <!-- Logo at Top Left Corner -->
-    <div class="fixed top-4 left-4 z-50">
-        <div class="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-3 border border-gray-200/50 dark:border-gray-700/50">
-            <img src="http://pace-services.com.ng/storage/app/public/photos/OTORjZOIcOMssWAFPewvjQx4lo2HoYvn5aLKVeot.png" alt="Logo" class="h-10">
-        </div>
-    </div>
-    
+  <div class="fixed top-4 left-4 z-50">
+    <a href="{% url 'home' %}">
+        <div class="absolute inset-0 bg-primary-400/20 rounded-xl blur-lg group-hover:bg-primary-400/30 transition-all duration-300"></div>
+        <img src="{% static 'images/wealthnettrader.png' %}" alt="Wealth-Logo" class="relative h-10 lg:h-10 w-auto rounded-xl">
+    </a>
+</div>
+
     <!-- Dark Mode Toggle - Floating button -->
     <div class="fixed top-4 right-4 z-50">
         <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" 
@@ -254,132 +255,159 @@
         </div>
     </div>
     
-    <!-- Form Container -->
-    <div class="px-6 pb-6 pt-4">
-        <form method="POST" action="{% url 'userprofile:register' %}" id="registration-form" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="hidden" name="a" value="signup">
-            <input type="hidden" name="action" value="signup">
+ <!-- Form Container -->
+<div class="px-6 pb-6 pt-4">
+    <form method="POST" action="{% url 'userprofile:register' %}" id="registration-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="a" value="signup">
+        <input type="hidden" name="action" value="signup">
 
-            {% if user_form.non_field_errors %}
-              <div class="mb-3 text-red-500">
-                {% for error in user_form.non_field_errors %}
-                  <p>{{ error }}</p>
-                {% endfor %}
-              </div>
-            {% endif %}
+        {% if user_form.non_field_errors %}
+          <div class="mb-3 text-red-500">
+            {% for error in user_form.non_field_errors %}
+              <p>{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
 
-            <!-- Step 1: Profile Information -->
-            <div id="step-1" class="step-content">
-                <div class="text-center mb-4">
-                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary-100/50 dark:bg-primary-800/50 backdrop-blur-sm mb-3">
-                        <i class="fas fa-user text-lg text-primary-600 dark:text-primary-300"></i>
-                    </div>
-                    <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Profile Information</h3>
-                    <p class="text-xs text-gray-600 dark:text-gray-400">Tell us about yourself</p>
+        <!-- Step 1: Profile Information -->
+        <div id="step-1" class="step-content">
+            <div class="text-center mb-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary-100/50 dark:bg-primary-800/50 backdrop-blur-sm mb-3">
+                    <i class="fas fa-user text-lg text-primary-600 dark:text-primary-300"></i>
                 </div>
-
-                <div class="space-y-3">
-                    <!-- Username -->
-                    <div class="space-y-1">
-                        <label for="{{ user_form.username.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Username *</label>
-                        {{ user_form.username|add_class:"w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
-                        {{ user_form.username.errors }}
-                    </div>
-
-                    <!-- Email -->
-                    <div class="space-y-1">
-                        <label for="{{ user_form.email.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Email *</label>
-                        {{ user_form.email|add_class:"w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
-                        {{ user_form.email.errors }}
-                    </div>
-
-                    <!-- Phone Number -->
-                    <div class="space-y-1">
-                        <label for="{{ profile_form.phone_number.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Phone Number</label>
-                        {{ profile_form.phone_number|add_class:"w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
-                        {{ profile_form.phone_number.errors }}
-                    </div>
-
-                    <!-- Country -->
-                    <div class="space-y-1">
-                        <label for="{{ profile_form.country.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Country</label>
-                        <select class="w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" id="{{ profile_form.country.id_for_label }}" name="{{ profile_form.country.html_name }}">
-                            {% for option in profile_form.country.field.choices %}
-                                <option value="{{ option.0 }}" {% if option.0 == profile_form.country.value %}selected{% endif %}>
-                                    {{ option.1 }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                        {{ profile_form.country.errors }}
-                    </div>
-                </div>
+                <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Profile Information</h3>
+                <p class="text-xs text-gray-600 dark:text-gray-400">Tell us about yourself</p>
             </div>
 
-            <!-- Step 2: Security Information -->
-            <div id="step-2" class="step-content" style="display:none;">
-                <div class="text-center mb-4">
-                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary-100/50 dark:bg-primary-800/50 backdrop-blur-sm mb-3">
-                        <i class="fas fa-lock text-lg text-primary-600 dark:text-primary-300"></i>
-                    </div>
-                    <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Security Setup</h3>
-                    <p class="text-xs text-gray-600 dark:text-gray-400">Secure your account</p>
+            <div class="space-y-3">
+                <!-- Username -->
+                <div class="space-y-1">
+                    <label for="{{ user_form.username.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Username *</label>
+                    {{ user_form.username|add_class:"w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
+                    {{ user_form.username.errors }}
                 </div>
 
-                <div class="space-y-3">
-                    <!-- Referral Code -->
-                    <div class="space-y-1">
-                        <label for="{{ profile_form.referral_bonus.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Referral Code</label>
-                        {{ profile_form.referral_bonus|add_class:"w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
-                        {{ profile_form.referral_bonus.errors }}
-                    </div>
+                <!-- Email -->
+                <div class="space-y-1">
+                    <label for="{{ user_form.email.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Email *</label>
+                    {{ user_form.email|add_class:"w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
+                    {{ user_form.email.errors }}
+                </div>
 
-                    <!-- Password -->
-                    <div class="space-y-1">
-                        <label for="{{ user_form.password1.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Password *</label>
-                        {{ user_form.password1|add_class:"w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
-                        {{ user_form.password1.errors }}
-                    </div>
+                <!-- Phone Number -->
+                <div class="space-y-1">
+                    <label for="{{ profile_form.phone_number.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Phone Number</label>
+                    {{ profile_form.phone_number|add_class:"w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
+                    {{ profile_form.phone_number.errors }}
+                </div>
 
-                    <!-- Confirm Password -->
-                    <div class="space-y-1">
-                        <label for="{{ user_form.password2.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Confirm Password *</label>
-                        {{ user_form.password2|add_class:"w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
-                        {{ user_form.password2.errors }}
-                    </div>
-
-                    <!-- Terms -->
-                    <div class="flex items-start space-x-2 pt-1">
-                        <input type="checkbox" id="terms" name="terms" class="mt-1 w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 focus:ring-2" required>
-                        <label for="terms" class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-                            I agree to the 
-                            <a href="#" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium">Terms of Service</a> 
-                            and 
-                            <a href="#" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium">Privacy Policy</a>
-                        </label>
-                    </div>
+                <!-- Country -->
+                <div class="space-y-1">
+                    <label for="{{ profile_form.country.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Country</label>
+                    <select class="w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" id="{{ profile_form.country.id_for_label }}" name="{{ profile_form.country.html_name }}">
+                        {% for option in profile_form.country.field.choices %}
+                            <option value="{{ option.0 }}" {% if option.0 == profile_form.country.value %}selected{% endif %}>
+                                {{ option.1 }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    {{ profile_form.country.errors }}
                 </div>
             </div>
-
-            <!-- Navigation Buttons -->
-            <div class="flex justify-between pt-4">
-                <button type="button" id="prev-btn" class="px-4 py-3 bg-gray-100/90 dark:bg-gray-700/90 hover:bg-gray-200/90 dark:hover:bg-gray-600/90 text-gray-800 dark:text-gray-200 font-medium rounded-xl transition-all duration-300 flex items-center group text-sm">Previous</button>
-                <button type="button" id="next-btn" class="ml-auto px-4 py-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 dark:from-primary-700 dark:to-primary-800 dark:hover:from-primary-600 dark:hover:to-primary-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center group text-sm">Proceed</button>
-                <button type="submit" id="submit-btn" class="ml-auto px-4 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center group text-sm" style="display:none;">Create Account</button>
-            </div>
-        </form>
-
-        <!-- Login Link -->
-        <div class="mt-6 text-center">
-            <p class="text-sm text-gray-600 dark:text-gray-400">
-                Already have a Wallet? 
-                <a href="{% url 'userprofile:login' %}" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-colors">
-                    Sign In
-                </a>
-            </p>
         </div>
+
+        <!-- Step 2: Security Information -->
+        <div id="step-2" class="step-content" style="display:none;">
+            <div class="text-center mb-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary-100/50 dark:bg-primary-800/50 backdrop-blur-sm mb-3">
+                    <i class="fas fa-lock text-lg text-primary-600 dark:text-primary-300"></i>
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Security Setup</h3>
+                <p class="text-xs text-gray-600 dark:text-gray-400">Secure your account</p>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Referral Code -->
+                <div class="space-y-1">
+                    <label for="{{ profile_form.referral_bonus.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Referral Code</label>
+                    {{ profile_form.referral_bonus|add_class:"w-full pl-3 pr-3 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
+                    {{ profile_form.referral_bonus.errors }}
+                </div>
+
+                <!-- Password -->
+                <div class="space-y-1 relative">
+                    <label for="{{ user_form.password1.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Password *</label>
+                    <div class="relative">
+                        {{ user_form.password1|add_class:"w-full pl-3 pr-10 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
+                        <button type="button" onclick="togglePassword('id_password1', this)" class="absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-300">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                    {{ user_form.password1.errors }}
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="space-y-1 relative">
+                    <label for="{{ user_form.password2.id_for_label }}" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">Confirm Password *</label>
+                    <div class="relative">
+                        {{ user_form.password2|add_class:"w-full pl-3 pr-10 py-3 border border-gray-300/50 dark:border-gray-600/50 rounded-xl bg-gray-50/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-300 text-sm" }}
+                        <button type="button" onclick="togglePassword('id_password2', this)" class="absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-300">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                    {{ user_form.password2.errors }}
+                </div>
+
+                <!-- Terms -->
+                <div class="flex items-start space-x-2 pt-1">
+                    <input type="checkbox" id="terms" name="terms" class="mt-1 w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 focus:ring-2" required>
+                    <label for="terms" class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                        I agree to the 
+                        <a href="#" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium">Terms of Service</a> 
+                        and 
+                        <a href="#" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium">Privacy Policy</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between pt-4">
+            <button type="button" id="prev-btn" class="px-4 py-3 bg-gray-100/90 dark:bg-gray-700/90 hover:bg-gray-200/90 dark:hover:bg-gray-600/90 text-gray-800 dark:text-gray-200 font-medium rounded-xl transition-all duration-300 flex items-center group text-sm">Previous</button>
+            <button type="button" id="next-btn" class="ml-auto px-4 py-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 dark:from-primary-700 dark:to-primary-800 dark:hover:from-primary-600 dark:hover:to-primary-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center group text-sm">Proceed</button>
+            <button type="submit" id="submit-btn" class="ml-auto px-4 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center group text-sm" style="display:none;">Create Account</button>
+        </div>
+    </form>
+
+    <!-- Login Link -->
+    <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+            Already have a Wallet? 
+            <a href="{% url 'userprofile:login' %}" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-colors">
+                Sign In
+            </a>
+        </p>
     </div>
-    
+</div>
+
+<!-- Password Toggle Script -->
+<script>
+function togglePassword(id, button) {
+    const input = document.getElementById(id);
+    const icon = button.querySelector('i');
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
+</script>
+
     <!-- Footer -->
     <div class="mt-6 text-center">
         <p class="text-xs text-gray-500 dark:text-gray-500 max-w-xs mx-auto leading-relaxed">
@@ -456,3 +484,63 @@ $(document).ready(function(){
     showStep(currentStep); // initialize
 });
 </script>
+   <!-- ======== PRELOADER START ======== -->
+<div id="preloader" class="fixed inset-0 bg-gray-950 flex flex-col items-center justify-center z-[9999] transition-opacity duration-700">
+  <div class="flex space-x-2 mb-6">
+    <div class="bar h-8 w-2 rounded-full bg-[#048ace] animate-bar"></div>
+    <div class="bar h-10 w-2 rounded-full bg-[#04b3ff] animate-bar delay-100"></div>
+    <div class="bar h-6 w-2 rounded-full bg-[#048ace] animate-bar delay-200"></div>
+    <div class="bar h-12 w-2 rounded-full bg-[#04b3ff] animate-bar delay-300"></div>
+    <div class="bar h-8 w-2 rounded-full bg-[#048ace] animate-bar delay-400"></div>
+  </div>
+
+  <h1 class="text-xl sm:text-2xl font-bold text-[#048ace] tracking-wide">WealthNetTrader</h1>
+</div>
+<!-- ======== PRELOADER END ======== -->
+
+<!-- ======== STYLES ======== -->
+<style>
+  /* Smooth fadeout */
+  #preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Bar animation */
+  @keyframes barUpDown {
+    0%, 100% {
+      transform: scaleY(0.4);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-bar {
+    animation: barUpDown 1s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+</style>
+
+<!-- ======== SCRIPT ======== -->
+<script>
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    setTimeout(() => {
+      preloader.classList.add("fade-out");
+      setTimeout(() => preloader.style.display = "none", 700);
+    }, 700); // Slight delay before fade
+  });
+</script>
+
+</div>
+</div
+></body
+></html>

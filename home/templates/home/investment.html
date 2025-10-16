@@ -297,20 +297,32 @@
 
 <body class="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <!-- Mobile Fixed Login/Register Buttons -->
+  
+     <!-- Mobile Fixed Login/Register Buttons BOTTOM -->
     <div class="mobile-fixed-buttons">
-        <a href="login.html" class="flex-1 px-6 py-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl text-primary-600 dark:text-primary-400 font-semibold shadow-lg border border-primary-200 dark:border-primary-700 hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors text-center">
-            <i class="fa-solid fa-sign-in-alt mr-2"></i>
-            Login
-        </a>
-        <a href="register.html" class="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold shadow-lg transition-colors text-center">
-            <i class="fa-solid fa-user-plus mr-2"></i>
-            Create Wallet
-        </a>
+       {% if user.is_authenticated %}
+    <a href="{% url 'userprofile:dashboard' %}" class="flex-1 px-6 py-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl text-primary-600 dark:text-primary-400 font-semibold shadow-lg border border-primary-200 dark:border-primary-700 hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors text-center">
+        <i class="fa-solid fa-user mr-2"></i>
+        {{ user.username }}
+    </a>
+{% else %}
+    <a href="{% url 'userprofile:login' %}" class="flex-1 px-6 py-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl text-primary-600 dark:text-primary-400 font-semibold shadow-lg border border-primary-200 dark:border-primary-700 hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors text-center">
+        <i class="fa-solid fa-sign-in-alt mr-2"></i>
+        Login
+    </a>
+{% endif %}
+
+     <a href="{% url 'userprofile:register' %}" class="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold shadow-lg transition-colors text-center">
+    <i class="fa-solid fa-wallet mr-2"></i>
+    Create Wallet
+</a>
+
     </div>
 
     <!-- Navigation Header -->
+   <!-- Navigation Header -->
     <nav class="relative bg-gradient-to-r from-white via-primary-50 to-white dark:from-gray-900 dark:via-primary-900 dark:to-gray-900 backdrop-blur-xl border-b border-gradient-to-r from-transparent via-primary-200/50 to-transparent dark:border-primary-700/30 sticky top-0 z-50 shadow-lg shadow-primary-500/5">
-        <!-- Your existing navigation content -->
+        <!-- Animated Background Pattern -->
         <div class="absolute inset-0 overflow-hidden">
             <div class="absolute -top-10 -left-10 w-20 h-20 bg-primary-200/20 dark:bg-primary-800/20 rounded-full blur-xl animate-pulse"></div>
             <div class="absolute -top-5 right-1/4 w-16 h-16 bg-teal-200/20 dark:bg-teal-800/20 rounded-full blur-lg animate-pulse" style="animation-delay: 1s;"></div>
@@ -319,25 +331,29 @@
         
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 lg:h-18">
-                <!-- Logo -->
-                <div class="flex items-center group">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-primary-400/20 rounded-xl blur-lg group-hover:bg-primary-400/30 transition-all duration-300"></div>
-                        <img src="{% static 'images/logos.png' %}" alt="Wealth-Logo" class="relative h-10 lg:h-10 w-auto">
-                    </div>
-                </div>
+                <!-- Logo with glow effect -->
+               <div class="flex items-center group">
+   <div class="relative">
+    <a href="{% url 'home' %}">
+        <div class="absolute inset-0 bg-primary-400/20 rounded-xl blur-lg group-hover:bg-primary-400/30 transition-all duration-300"></div>
+        <img src="{% static 'images/wealthnettrader.png' %}" alt="Wealth-Logo" class="relative h-10 lg:h-10 w-auto rounded-xl">
+    </a>
+</div>
 
-                <!-- Desktop Navigation -->
+</div>
+
+
+                <!-- Desktop Navigation with modern styling -->
                 <div class="hidden lg:flex items-center space-x-1">
-                    <a href="index.html" class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
+                    <a href="{% url 'home' %}"class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
                         <span class="relative z-10">Home</span>
                         <div class="absolute inset-0 bg-primary-50 dark:bg-primary-900/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
                     </a>
-                    <a href="{% url 'about' %}" class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
+                    <a  href="{% url 'about' %}" class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
                         <span class="relative z-10">About</span>
                         <div class="absolute inset-0 bg-primary-50 dark:bg-primary-900/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
                     </a>
-                    <a href="about.html" class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
+                    <a href="{% url 'investment' %}" class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
                         <span class="relative z-10">Investment</span>
                         <div class="absolute inset-0 bg-primary-50 dark:bg-primary-900/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
                     </a>
@@ -349,28 +365,29 @@
                         </button>
                         <!-- Services Dropdown -->
                         <div class="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                            <div class="p-2">
-                                <a href="chart.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
-                                    <i class="fa-solid fa-user mr-3 text-primary-500"></i>
-                                    Portfolio Overview
-                                </a>
-                                <a href="alerts.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
-                                    <i class="fa-solid fa-briefcase mr-3 text-blue-500"></i>
-                                    Market Alerts
-                                </a>
-                                <a href="send-money.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
-                                    <i class="fa-solid fa-handshake mr-3 text-green-500"></i>
-                                    Buy & Sell Crypto
-                                </a>
-                                <a href="login.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
-                                    <i class="fa-solid fa-credit-card mr-3 text-purple-500"></i>
-                                    Wallet & Payments
-                                </a>
-                                <a href="grants.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
-                                    <i class="fa-solid fa-hand-holding-dollar mr-3 text-orange-500"></i>
-                                    Staking & Rewards
-                                </a>
-                            </div>
+                           <div class="p-2">
+    <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
+        <i class="fa-solid fa-user mr-3 text-primary-500"></i>
+        Portfolio Overview
+    </a>
+    <a href="https://www.tradingview.com/markets/"  class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
+        <i class="fa-solid fa-briefcase mr-3 text-blue-500"></i>
+        Market Alerts
+    </a>
+    <a  href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
+        <i class="fa-solid fa-handshake mr-3 text-green-500"></i>
+        Buy & Sell Crypto
+    </a>
+    <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
+        <i class="fa-solid fa-credit-card mr-3 text-purple-500"></i>
+        Wallet & Payments
+    </a>
+    <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
+        <i class="fa-solid fa-hand-holding-dollar mr-3 text-orange-500"></i>
+        Staking & Rewards
+    </a>
+</div>
+
                         </div>
                     </div>
                     <a href="{% url 'contact' %}" class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
@@ -379,29 +396,45 @@
                     </a>
                 </div>
 
-                <!-- Desktop Action Buttons -->
+                <!-- Desktop Action Buttons with enhanced styling -->
                 <div class="hidden lg:flex items-center space-x-3">
+                    
+
+                    <!-- Dark Mode Toggle with animation -->
                     <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" 
                             class="relative p-3 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 text-gray-600 dark:text-gray-300 hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group">
                         <i class="fa-solid fa-sun text-lg group-hover:rotate-180 transition-transform duration-500" x-show="darkMode"></i>
                         <i class="fa-solid fa-moon text-lg group-hover:rotate-12 transition-transform duration-300" x-show="!darkMode"></i>
                     </button>
                     
-                    <a href="login.html" class="relative px-4 py-2.5 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-all duration-300 group">
-                        <span class="relative z-10">Login</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-                    </a>
+                    <!-- Login Button with hover effects -->
+                  {% if user.is_authenticated %}
+    <a href="{% url 'userprofile:dashboard' %}" class="relative px-4 py-2.5 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-all duration-300 group">
+        <span class="relative z-10 flex items-center gap-2">
+            <i class="fa-solid fa-user"></i>
+            {{ user.username }}
+        </span>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+    </a>
+{% else %}
+    <a href="{% url 'userprofile:login' %}" class="relative px-4 py-2.5 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-all duration-300 group">
+        <span class="relative z-10">Login</span>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+    </a>
+{% endif %}
+
                     
-                    <a href="register.html" class="relative px-6 py-2.5 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 hover:from-primary-700 hover:via-primary-600 hover:to-primary-700 text-white font-semibold rounded-2xl transition-all duration-300 shadow-lg shadow-primary-600/25 hover:shadow-xl hover:shadow-primary-600/40 hover:-translate-y-0.5 group overflow-hidden">
+                    <!-- Open Account Button with premium styling -->
+                    <a href="{% url 'userprofile:register' %}" class="relative px-6 py-2.5 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 hover:from-primary-700 hover:via-primary-600 hover:to-primary-700 text-white font-semibold rounded-2xl transition-all duration-300 shadow-lg shadow-primary-600/25 hover:shadow-xl hover:shadow-primary-600/40 hover:-translate-y-0.5 group overflow-hidden">
                         <span class="relative z-10 flex items-center">
-                            <i class="fa-solid fa-sparkles mr-2 group-hover:animate-spin"></i>
+                            <i class="fa-solid fa-wallet mr-2 group-hover:animate-spin"></i>
                             Create Wallet
                         </span>
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
+                <!-- Mobile Menu Button with modern design -->
                 <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden relative p-3 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 text-gray-600 dark:text-gray-300 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5">
                     <i class="fa-solid fa-bars text-lg transition-transform duration-300" x-show="!mobileMenuOpen" :class="{'rotate-180': mobileMenuOpen}"></i>
                     <i class="fa-solid fa-times text-lg transition-transform duration-300" x-show="mobileMenuOpen" :class="{'rotate-180': !mobileMenuOpen}"></i>
@@ -419,19 +452,91 @@
              x-transition:leave-end="opacity-0 -translate-y-4"
              class="lg:hidden absolute top-full left-0 right-0 bg-gradient-to-br from-white via-primary-50 to-white dark:from-gray-900 dark:via-primary-900 dark:to-gray-900 backdrop-blur-xl border-t border-primary-200/70 dark:border-primary-700/50 shadow-2xl shadow-primary-500/20">
             
+            <!-- Mobile menu background pattern -->
             <div class="absolute inset-0 overflow-hidden">
                 <div class="absolute top-0 left-1/4 w-32 h-32 bg-primary-200/20 dark:bg-primary-800/20 rounded-full blur-2xl"></div>
                 <div class="absolute bottom-0 right-1/4 w-24 h-24 bg-teal-200/20 dark:bg-teal-800/20 rounded-full blur-xl"></div>
             </div>
             
             <div class="relative px-6 py-6 space-y-2">
-                <!-- Mobile navigation links -->
-                <a href="index.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+                <!-- Navigation Links with enhanced styling -->
+                <a href="{% url 'home' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
                     <i class="fa-solid fa-home mr-4 text-primary-500 group-hover:scale-110 transition-transform duration-300"></i>
                     <span>Home</span>
                     <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
                 </a>
-                <!-- ... other mobile menu items ... -->
+                <a href="{% url 'about' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+                    <i class="fa-solid fa-info-circle mr-4 text-teal-500 group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>About</span>
+                    <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
+                </a>
+              <a href="{% url 'investment' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+    <i class="fa-solid fa-chart-line mr-4 text-teal-500 group-hover:scale-110 transition-transform duration-300"></i>
+    <span>Investment</span>
+    <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
+</a>
+
+                  
+                <!-- Services Submenu -->
+           <div x-data="{ servicesOpen: false }" class="space-y-2">
+    <button @click="servicesOpen = !servicesOpen" class="flex items-center w-full px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+        <i class="fa-solid fa-coins mr-4 text-purple-500 group-hover:scale-110 transition-transform duration-300"></i>
+        <span>Services</span>
+        <i class="fa-solid fa-chevron-down ml-auto text-xs transition-transform duration-300" :class="{ 'rotate-180': servicesOpen }"></i>
+    </button>
+
+    <div x-show="servicesOpen" x-transition class="ml-8 space-y-1">
+        <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
+            <i class="fa-solid fa-chart-line mr-3 text-primary-400"></i>
+            Portfolio Overview
+        </a>
+        <a href="https://www.tradingview.com/markets/" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
+            <i class="fa-solid fa-bell mr-3 text-blue-400"></i>
+            Market Alerts
+        </a>
+        <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
+            <i class="fa-solid fa-arrows-rotate mr-3 text-green-400"></i>
+            Buy & Sell Crypto
+        </a>
+        <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
+            <i class="fa-solid fa-wallet mr-3 text-purple-400"></i>
+            Wallet & Payments
+        </a>
+        <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
+            <i class="fa-solid fa-chart-pie mr-3 text-orange-400"></i>
+            Staking & Rewards
+        </a>
+    </div>
+</div>
+
+                
+                <a href="{% url 'contact' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+                    <i class="fa-solid fa-envelope mr-4 text-orange-500 group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Contact</span>
+                    <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
+                </a>
+                
+                <!-- Additional Mobile Links -->
+                <!-- <a href="apps.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+                    <i class="fa-solid fa-mobile-alt mr-4 text-indigo-500 group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Mobile App</span>
+                    <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
+                </a>
+                 -->
+                <!-- Enhanced Dark Mode Toggle for Mobile -->
+                <div class="pt-4 mt-4 border-t border-primary-700/50">
+                    
+
+                    <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" 
+                            class="flex items-center w-full px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+                        <div class="flex items-center justify-center w-8 h-8 mr-4 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 dark:from-blue-500 dark:to-purple-600 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-sun text-white text-sm group-hover:rotate-180 transition-transform duration-500" x-show="darkMode"></i>
+                            <i class="fa-solid fa-moon text-white text-sm group-hover:rotate-12 transition-transform duration-300" x-show="!darkMode"></i>
+                        </div>
+                        <span x-text="darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'"></span>
+                        <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -521,123 +626,151 @@
     </div>
 </div>
     <!-- Rates Section -->
-    <section class="relative py-16 lg:py-20 bg-gradient-to-br from-slate-50 via-white to-primary-50 dark:from-gray-900 dark:via-gray-800 dark:to-primary-900/20 overflow-hidden">
-        
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Standard Investment Plans -->
-            <div class="grid sm:grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-                <!-- BASIC PLAN -->
-                <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-300/50 dark:hover:border-blue-600/50 overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="flex items-center justify-center w-16 h-16 mx-auto bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50 rounded-2xl mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
-                            <i class="fa-solid fa-piggy-bank text-xl text-blue-600 dark:text-blue-400"></i>
-                        </div>
-                        <span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 text-blue-700 dark:text-blue-400 rounded-full text-xs font-bold shadow-sm mb-2">
-                            <i class="fa-solid fa-star mr-1 animate-pulse"></i>BASIC
-                        </span>
-                        <div class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent mb-2">40%</div>
-                        <div class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">3 days</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Min deposit: <strong class="dark:text-white font-bold">$500</strong></div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Max deposit: <strong class="dark:text-white font-bold">$999</strong></div>
-                        <div class="mt-4">
-                            <span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 text-blue-700 dark:text-blue-400 rounded-full text-xs font-bold shadow-sm"><i class="fa-solid fa-arrow-trend-up mr-1"></i>INVEST NOW</span>
-                        </div>
-                    </div>
-                </div>
+<section class="relative py-20 lg:py-24 bg-gradient-to-br from-slate-50 via-white to-primary-50 dark:from-gray-900 dark:via-gray-800 dark:to-primary-900/20 overflow-hidden">
 
-                <!-- SILVER PLAN -->
-                <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 dark:border-gray-700/50 hover:border-sky-300/50 dark:hover:border-sky-600/50 overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="flex items-center justify-center w-16 h-16 mx-auto bg-gradient-to-br from-sky-100 to-cyan-200 dark:from-sky-900/50 dark:to-cyan-800/50 rounded-2xl mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
-                            <i class="fa-solid fa-coins text-xl text-sky-600 dark:text-sky-400"></i>
-                        </div>
-                        <span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-sky-100 to-cyan-200 dark:from-sky-900/30 dark:to-cyan-800/30 text-sky-700 dark:text-sky-400 rounded-full text-xs font-bold shadow-sm mb-2">
-                            <i class="fa-solid fa-gem mr-1 animate-pulse"></i>SILVER
-                        </span>
-                        <div class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-sky-600 to-cyan-600 dark:from-sky-400 dark:to-cyan-400 bg-clip-text text-transparent mb-2">85%</div>
-                        <div class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">7 days</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Min deposit: <strong class="dark:text-white font-bold">$1,000</strong></div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Max deposit: <strong class="dark:text-white font-bold">$4,999</strong></div>
-                        <div class="mt-4"><span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-sky-100 to-cyan-200 dark:from-sky-900/30 dark:to-cyan-800/30 text-sky-700 dark:text-sky-400 rounded-full text-xs font-bold shadow-sm"><i class="fa-solid fa-arrow-trend-up mr-1"></i>INVEST NOW</span></div>
-                    </div>
-                </div>
+  <!-- Standard Investment Plans -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
 
-                <!-- GOLD PLAN -->
-                <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 dark:border-gray-700/50 hover:border-yellow-300/50 dark:hover:border-yellow-600/50 overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="flex items-center justify-center w-16 h-16 mx-auto bg-gradient-to-br from-yellow-100 to-amber-200 dark:from-yellow-900/50 dark:to-amber-800/50 rounded-2xl mb-6 transition-all duration-300 group-hover:scale-110 shadow-lg">
-                            <i class="fa-solid fa-crown text-xl text-yellow-600 dark:text-yellow-400"></i>
-                        </div>
-                        <span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-yellow-100 to-amber-200 dark:from-yellow-900/30 dark:to-amber-800/30 text-yellow-700 dark:text-yellow-400 rounded-full text-xs font-bold shadow-sm mb-2">
-                            <i class="fa-solid fa-star mr-1 animate-pulse"></i>GOLD
-                        </span>
-                        <div class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 dark:from-yellow-400 dark:to-amber-400 bg-clip-text text-transparent mb-2">150%</div>
-                        <div class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">10 days</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Min deposit: <strong class="dark:text-white font-bold">$5,000</strong></div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Max deposit: <strong class="dark:text-white font-bold">$9,999</strong></div>
-                        <div class="mt-4"><span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-yellow-100 to-amber-200 dark:from-yellow-900/30 dark:to-amber-800/30 text-yellow-700 dark:text-yellow-400 rounded-full text-xs font-bold shadow-sm"><i class="fa-solid fa-arrow-trend-up mr-1"></i>INVEST NOW</span></div>
-                    </div>
-                </div>
-
-                <!-- PLATINUM PLAN -->
-                <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 dark:border-gray-700/50 hover:border-purple-300/50 dark:hover:border-purple-600/50 overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-fuchsia-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="flex items-center justify-center w-16 h-16 mx-auto bg-gradient-to-br from-purple-100 to-fuchsia-200 dark:from-purple-900/50 dark:to-fuchsia-800/50 rounded-2xl mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
-                            <i class="fa-solid fa-diamond text-xl text-purple-600 dark:text-purple-400"></i>
-                        </div>
-                        <span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-purple-100 to-fuchsia-200 dark:from-purple-900/30 dark:to-fuchsia-800/30 text-purple-700 dark:text-purple-400 rounded-full text-xs font-bold shadow-sm mb-2">
-                            <i class="fa-solid fa-gem mr-1 animate-pulse"></i>PLATINUM
-                        </span>
-                        <div class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-600 to-fuchsia-600 dark:from-purple-400 dark:to-fuchsia-400 bg-clip-text text-transparent mb-2">300%</div>
-                        <div class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">20 days</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Min deposit: <strong class="dark:text-white font-bold">$10,000</strong></div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Max deposit: <strong class="dark:text-white font-bold">$19,999</strong></div>
-                        <div class="mt-4"><span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-purple-100 to-fuchsia-200 dark:from-purple-900/30 dark:to-fuchsia-800/30 text-purple-700 dark:text-purple-400 rounded-full text-xs font-bold shadow-sm"><i class="fa-solid fa-arrow-trend-up mr-1"></i>INVEST NOW</span></div>
-                    </div>
-                </div>
-
-                <!-- ELITE PLAN -->
-                <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 dark:border-gray-700/50 hover:border-teal-300/50 dark:hover:border-teal-600/50 overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-teal-500/10 via-transparent to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="flex items-center justify-center w-16 h-16 mx-auto bg-gradient-to-br from-teal-100 to-green-200 dark:from-teal-900/50 dark:to-green-800/50 rounded-2xl mb-6 group-hover:scale-110 shadow-lg transition-all duration-300">
-                            <i class="fa-solid fa-trophy text-xl text-teal-600 dark:text-teal-400"></i>
-                        </div>
-                        <span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-teal-100 to-green-200 dark:from-teal-900/30 dark:to-green-800/30 text-teal-700 dark:text-teal-400 rounded-full text-xs font-bold shadow-sm mb-2">
-                            <i class="fa-solid fa-award mr-1 animate-pulse"></i>ELITE
-                        </span>
-                        <div class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-teal-600 to-green-600 dark:from-teal-400 dark:to-green-400 bg-clip-text text-transparent mb-2">500%</div>
-                        <div class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">30 days</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Min deposit: <strong class="dark:text-white font-bold">$20,000</strong></div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Max deposit: <strong class="dark:text-white font-bold">$49,999</strong></div>
-                        <div class="mt-4"><span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-teal-100 to-green-200 dark:from-teal-900/30 dark:to-green-800/30 text-teal-700 dark:text-teal-400 rounded-full text-xs font-bold shadow-sm"><i class="fa-solid fa-arrow-trend-up mr-1"></i>INVEST NOW</span></div>
-                    </div>
-                </div>
-
-                <!-- DIAMOND PLAN -->
-                <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 dark:border-gray-700/50 hover:border-rose-300/50 dark:hover:border-rose-600/50 overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-rose-500/10 via-transparent to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="flex items-center justify-center w-16 h-16 mx-auto bg-gradient-to-br from-rose-100 to-pink-200 dark:from-rose-900/50 dark:to-pink-800/50 rounded-2xl mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
-                            <i class="fa-solid fa-gem text-xl text-rose-600 dark:text-rose-400"></i>
-                        </div>
-                        <span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-rose-100 to-pink-200 dark:from-rose-900/30 dark:to-pink-800/30 text-rose-700 dark:text-rose-400 rounded-full text-xs font-bold shadow-sm mb-2">
-                            <i class="fa-solid fa-diamond mr-1 animate-pulse"></i>DIAMOND
-                        </span>
-                        <div class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-rose-600 to-pink-600 dark:from-rose-400 dark:to-pink-400 bg-clip-text text-transparent mb-2">700%</div>
-                        <div class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">40 days</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Min deposit: <strong class="dark:text-white font-bold">$50,000</strong></div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Max deposit: <strong class="dark:text-white font-bold">$99,999</strong></div>
-                        <div class="mt-4"><span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-rose-100 to-pink-200 dark:from-rose-900/30 dark:to-pink-800/30 text-rose-700 dark:text-rose-400 rounded-full text-xs font-bold shadow-sm"><i class="fa-solid fa-arrow-trend-up mr-1"></i>INVEST NOW</span></div>
-                    </div>
-                </div>
-            </div>
+      <!-- BASIC PLAN -->
+      <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-300/50 dark:hover:border-blue-600/50 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10 text-center text-gray-800 dark:text-white space-y-4">
+          <div class="flex items-center justify-center w-20 h-20 mx-auto bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50 rounded-2xl mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+            <i class="fa-solid fa-piggy-bank text-2xl text-blue-600 dark:text-blue-400"></i>
+          </div>
+          <span class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 rounded-full text-xs font-bold shadow-sm mb-2">
+            <i class="fa-solid fa-star mr-1 animate-pulse"></i>BASIC
+          </span>
+          <div class="text-3xl lg:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">35%</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300 mb-3 font-medium">3 days</div>
+          <div class="text-xs leading-relaxed">Min deposit: <strong>$500</strong></div>
+          <div class="text-xs leading-relaxed">Max deposit: <strong>$999</strong></div>
+          <div class="pt-6">
+            <a href="{% url 'userprofile:dashboard' %}" class="animate-pulse inline-flex items-center px-6 py-3 bg-blue-600 text-white text-sm font-semibold rounded-full shadow-md hover:bg-blue-700 transition">
+              <i class="fa-solid fa-arrow-trend-up mr-2"></i>Invest Now
+            </a>
+          </div>
         </div>
-    </section>
+      </div>
+
+      <!-- SILVER PLAN -->
+      <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 dark:border-gray-700/50 hover:border-sky-300/50 dark:hover:border-sky-600/50 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10 text-center text-gray-800 dark:text-white space-y-4">
+          <div class="flex items-center justify-center w-20 h-20 mx-auto bg-gradient-to-br from-sky-100 to-cyan-200 dark:from-sky-900/50 dark:to-cyan-800/50 rounded-2xl mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+            <i class="fa-solid fa-coins text-2xl text-sky-600 dark:text-sky-400"></i>
+          </div>
+          <span class="inline-flex items-center px-4 py-2 bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300 rounded-full text-xs font-bold shadow-sm mb-2">
+            <i class="fa-solid fa-gem mr-1 animate-pulse"></i>SILVER
+          </span>
+          <div class="text-3xl lg:text-4xl font-bold text-sky-600 dark:text-sky-400 mb-2">38%</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300 mb-3 font-medium">5 days</div>
+          <div class="text-xs leading-relaxed">Min deposit: <strong>$1,000</strong></div>
+          <div class="text-xs leading-relaxed">Max deposit: <strong>$4,999</strong></div>
+          <div class="pt-6">
+            <a href="{% url 'userprofile:dashboard' %}" class="animate-pulse inline-flex items-center px-6 py-3 bg-sky-600 text-white text-sm font-semibold rounded-full shadow-md hover:bg-sky-700 transition">
+              <i class="fa-solid fa-arrow-trend-up mr-2"></i>Invest Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GOLD PLAN -->
+      <div class="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 hover:border-yellow-300/50 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10 text-center text-gray-800 dark:text-white space-y-4">
+          <div class="flex items-center justify-center w-20 h-20 mx-auto bg-yellow-100 dark:bg-yellow-900/40 rounded-2xl mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+            <i class="fa-solid fa-crown text-2xl text-yellow-600 dark:text-yellow-400"></i>
+          </div>
+          <span class="inline-flex items-center px-4 py-2 bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300 rounded-full text-xs font-bold shadow-sm mb-2">
+            <i class="fa-solid fa-star mr-1 animate-pulse"></i>GOLD
+          </span>
+          <div class="text-3xl lg:text-4xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">40%</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300 mb-3 font-medium">7 days</div>
+          <div class="text-xs leading-relaxed">Min deposit: <strong>$5,000</strong></div>
+          <div class="text-xs leading-relaxed">Max deposit: <strong>$9,999</strong></div>
+          <div class="pt-6">
+            <a href="{% url 'userprofile:dashboard' %}" class="animate-pulse inline-flex items-center px-6 py-3 bg-yellow-500 text-white text-sm font-semibold rounded-full shadow-md hover:bg-yellow-600 transition">
+              <i class="fa-solid fa-arrow-trend-up mr-2"></i>Invest Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLATINUM PLAN -->
+      <div class="group relative bg-white/80 dark:bg-gray-800/80 rounded-2xl p-8 sm:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 hover:border-purple-300/50 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-fuchsia-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10 text-center text-gray-800 dark:text-white space-y-4">
+          <div class="flex items-center justify-center w-20 h-20 mx-auto bg-purple-100 dark:bg-purple-900/40 rounded-2xl mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+            <i class="fa-solid fa-diamond text-2xl text-purple-600 dark:text-purple-400"></i>
+          </div>
+          <span class="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 rounded-full text-xs font-bold shadow-sm mb-2">
+            <i class="fa-solid fa-gem mr-1 animate-pulse"></i>PLATINUM
+          </span>
+          <div class="text-3xl lg:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">42%</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300 mb-3 font-medium">10 days</div>
+          <div class="text-xs leading-relaxed">Min deposit: <strong>$10,000</strong></div>
+          <div class="text-xs leading-relaxed">Max deposit: <strong>$19,999</strong></div>
+          <div class="pt-6">
+            <a href="{% url 'userprofile:dashboard' %}" class="animate-pulse inline-flex items-center px-6 py-3 bg-purple-600 text-white text-sm font-semibold rounded-full shadow-md hover:bg-purple-700 transition">
+              <i class="fa-solid fa-arrow-trend-up mr-2"></i>Invest Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ELITE PLAN -->
+      <div class="group relative bg-white/80 dark:bg-gray-800/80 rounded-2xl p-8 sm:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 hover:border-teal-300/50 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10 text-center text-gray-800 dark:text-white space-y-4">
+          <div class="flex items-center justify-center w-20 h-20 mx-auto bg-teal-100 dark:bg-teal-900/40 rounded-2xl mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+            <i class="fa-solid fa-trophy text-2xl text-teal-600 dark:text-teal-400"></i>
+          </div>
+          <span class="inline-flex items-center px-4 py-2 bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300 rounded-full text-xs font-bold shadow-sm mb-2">
+            <i class="fa-solid fa-award mr-1 animate-pulse"></i>ELITE
+          </span>
+          <div class="text-3xl lg:text-4xl font-bold text-teal-600 dark:text-teal-400 mb-2">43%</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300 mb-3 font-medium">14 days</div>
+          <div class="text-xs leading-relaxed">Min deposit: <strong>$20,000</strong></div>
+          <div class="text-xs leading-relaxed">Max deposit: <strong>$49,999</strong></div>
+          <div class="pt-6">
+            <a href="{% url 'userprofile:dashboard' %}" class="animate-pulse inline-flex items-center px-6 py-3 bg-teal-600 text-white text-sm font-semibold rounded-full shadow-md hover:bg-teal-700 transition">
+              <i class="fa-solid fa-arrow-trend-up mr-2"></i>Invest Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIAMOND PLAN -->
+      <div class="group relative bg-white/80 dark:bg-gray-800/80 rounded-2xl p-8 sm:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-200/50 hover:border-rose-300/50 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10 text-center text-gray-800 dark:text-white space-y-4">
+          <div class="flex items-center justify-center w-20 h-20 mx-auto bg-rose-100 dark:bg-rose-900/40 rounded-2xl mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
+            <i class="fa-solid fa-gem text-2xl text-rose-600 dark:text-rose-400"></i>
+          </div>
+          <span class="inline-flex items-center px-4 py-2 bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300 rounded-full text-xs font-bold shadow-sm mb-2">
+            <i class="fa-solid fa-diamond mr-1 animate-pulse"></i>DIAMOND
+          </span>
+          <div class="text-3xl lg:text-4xl font-bold text-rose-600 dark:text-rose-400 mb-2">45%</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300 mb-3 font-medium">20 days</div>
+          <div class="text-xs leading-relaxed">Min deposit: <strong>$50,000</strong></div>
+          <div class="text-xs leading-relaxed">Max deposit: <strong>$99,999</strong></div>
+          <div class="pt-6">
+            <a href="{% url 'userprofile:dashboard' %}" class="animate-pulse inline-flex items-center px-6 py-3 bg-rose-600 text-white text-sm font-semibold rounded-full shadow-md hover:bg-rose-700 transition">
+              <i class="fa-solid fa-arrow-trend-up mr-2"></i>Invest Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- End Standard Investment Plans -->
+
+</section>
+
+
     
    <footer class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 py-14 transition-colors duration-500">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
@@ -845,5 +978,60 @@
             }, 5000);
         };
     </script>
+       <!-- ======== PRELOADER START ======== -->
+<div id="preloader" class="fixed inset-0 bg-gray-950 flex flex-col items-center justify-center z-[9999] transition-opacity duration-700">
+  <div class="flex space-x-2 mb-6">
+    <div class="bar h-8 w-2 rounded-full bg-[#048ace] animate-bar"></div>
+    <div class="bar h-10 w-2 rounded-full bg-[#04b3ff] animate-bar delay-100"></div>
+    <div class="bar h-6 w-2 rounded-full bg-[#048ace] animate-bar delay-200"></div>
+    <div class="bar h-12 w-2 rounded-full bg-[#04b3ff] animate-bar delay-300"></div>
+    <div class="bar h-8 w-2 rounded-full bg-[#048ace] animate-bar delay-400"></div>
+  </div>
+
+  <h1 class="text-xl sm:text-2xl font-bold text-[#048ace] tracking-wide">WealthNetTrader</h1>
+</div>
+<!-- ======== PRELOADER END ======== -->
+
+<!-- ======== STYLES ======== -->
+<style>
+  /* Smooth fadeout */
+  #preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Bar animation */
+  @keyframes barUpDown {
+    0%, 100% {
+      transform: scaleY(0.4);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-bar {
+    animation: barUpDown 1s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+</style>
+
+<!-- ======== SCRIPT ======== -->
+<script>
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    setTimeout(() => {
+      preloader.classList.add("fade-out");
+      setTimeout(() => preloader.style.display = "none", 700);
+    }, 700); // Slight delay before fade
+  });
+</script>
 </body>
 </html>

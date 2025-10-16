@@ -136,7 +136,7 @@ def register(request):
 
                 # Log the user in and redirect to the dashboard
                 django_login(request, user)
-                messages.success(request, "Your account has been created successfully!")
+                messages.success(request, "Your Wallet has been created successfully!")
                 return redirect("userprofile:dashboard")
 
             except ValidationError as e:

@@ -7,12 +7,12 @@
     <title>Wealthtnettrader</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="xYfLTfRRpuMAdx5yO56hRbjqPJ7PgY0VQbbfZy1T">
+    <meta name="csrf-token" content="">
     <meta name="robots" content="index, follow">
-    <meta name="apple-mobile-web-app-title" content="Kenny-bank">
-    <meta name="application-name" content="Kenny-bank">
+    <meta name="apple-mobile-web-app-title" content="">
+    <meta name="application-name" content="">
     <meta name="description" content="Swift and Secure Money Transfer to any UK bank account will become a breeze with Kenny-bank.">
-    <link rel="shortcut icon" href="storage/app/public/photos/9fWu4ZCHD86E5umzFH47HXRo6o3PsH5QffEU17pi.png">
+    <link rel="shortcut icon" href="">
     
     <!-- Dark mode initialization -->
     <script>
@@ -288,7 +288,7 @@
 
 
 
-    <!-- Navigation Header -->
+   <!-- Navigation Header -->
     <nav class="relative bg-gradient-to-r from-white via-primary-50 to-white dark:from-gray-900 dark:via-primary-900 dark:to-gray-900 backdrop-blur-xl border-b border-gradient-to-r from-transparent via-primary-200/50 to-transparent dark:border-primary-700/30 sticky top-0 z-50 shadow-lg shadow-primary-500/5">
         <!-- Animated Background Pattern -->
         <div class="absolute inset-0 overflow-hidden">
@@ -300,16 +300,20 @@
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 lg:h-18">
                 <!-- Logo with glow effect -->
-                <div class="flex items-center group">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-primary-400/20 rounded-xl blur-lg group-hover:bg-primary-400/30 transition-all duration-300"></div>
-                        <img src="{% static 'images/logos.png' %}" alt="Wealth-Logo" class="relative h-10 lg:h-10 w-auto">
-                    </div>
-                </div>
+               <div class="flex items-center group">
+   <div class="relative">
+    <a href="{% url 'home' %}">
+        <div class="absolute inset-0 bg-primary-400/20 rounded-xl blur-lg group-hover:bg-primary-400/30 transition-all duration-300"></div>
+        <img src="{% static 'images/wealthnettrader.png' %}" alt="Wealth-Logo" class="relative h-10 lg:h-10 w-auto rounded-xl">
+    </a>
+</div>
+
+</div>
+
 
                 <!-- Desktop Navigation with modern styling -->
                 <div class="hidden lg:flex items-center space-x-1">
-                    <a href="index.html" class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
+                    <a href="{% url 'home' %}"class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
                         <span class="relative z-10">Home</span>
                         <div class="absolute inset-0 bg-primary-50 dark:bg-primary-900/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
                     </a>
@@ -317,7 +321,7 @@
                         <span class="relative z-10">About</span>
                         <div class="absolute inset-0 bg-primary-50 dark:bg-primary-900/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
                     </a>
-                    <a href="about.html" class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
+                    <a href="{% url 'investment' %}" class="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 group">
                         <span class="relative z-10">Investment</span>
                         <div class="absolute inset-0 bg-primary-50 dark:bg-primary-900/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
                     </a>
@@ -330,23 +334,23 @@
                         <!-- Services Dropdown -->
                         <div class="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                            <div class="p-2">
-    <a href="chart.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
+    <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
         <i class="fa-solid fa-user mr-3 text-primary-500"></i>
         Portfolio Overview
     </a>
-    <a href="alerts.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
+    <a href="https://www.tradingview.com/markets/"  class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
         <i class="fa-solid fa-briefcase mr-3 text-blue-500"></i>
         Market Alerts
     </a>
-    <a href="send-money.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
+    <a  href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
         <i class="fa-solid fa-handshake mr-3 text-green-500"></i>
         Buy & Sell Crypto
     </a>
-    <a href="login.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
+    <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
         <i class="fa-solid fa-credit-card mr-3 text-purple-500"></i>
         Wallet & Payments
     </a>
-    <a href="grants.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
+    <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-all duration-300">
         <i class="fa-solid fa-hand-holding-dollar mr-3 text-orange-500"></i>
         Staking & Rewards
     </a>
@@ -372,15 +376,26 @@
                     </button>
                     
                     <!-- Login Button with hover effects -->
-                    <a href="login.html" class="relative px-4 py-2.5 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-all duration-300 group">
-                        <span class="relative z-10">Login</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-                    </a>
+                  {% if user.is_authenticated %}
+    <a href="{% url 'userprofile:dashboard' %}" class="relative px-4 py-2.5 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-all duration-300 group">
+        <span class="relative z-10 flex items-center gap-2">
+            <i class="fa-solid fa-user"></i>
+            {{ user.username }}
+        </span>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+    </a>
+{% else %}
+    <a href="{% url 'userprofile:login' %}" class="relative px-4 py-2.5 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-all duration-300 group">
+        <span class="relative z-10">Login</span>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+    </a>
+{% endif %}
+
                     
                     <!-- Open Account Button with premium styling -->
-                    <a href="register.html" class="relative px-6 py-2.5 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 hover:from-primary-700 hover:via-primary-600 hover:to-primary-700 text-white font-semibold rounded-2xl transition-all duration-300 shadow-lg shadow-primary-600/25 hover:shadow-xl hover:shadow-primary-600/40 hover:-translate-y-0.5 group overflow-hidden">
+                    <a href="{% url 'userprofile:register' %}" class="relative px-6 py-2.5 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 hover:from-primary-700 hover:via-primary-600 hover:to-primary-700 text-white font-semibold rounded-2xl transition-all duration-300 shadow-lg shadow-primary-600/25 hover:shadow-xl hover:shadow-primary-600/40 hover:-translate-y-0.5 group overflow-hidden">
                         <span class="relative z-10 flex items-center">
-                            <i class="fa-solid fa-sparkles mr-2 group-hover:animate-spin"></i>
+                            <i class="fa-solid fa-wallet mr-2 group-hover:animate-spin"></i>
                             Create Wallet
                         </span>
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
@@ -413,23 +428,23 @@
             
             <div class="relative px-6 py-6 space-y-2">
                 <!-- Navigation Links with enhanced styling -->
-                <a href="index.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+                <a href="{% url 'home' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
                     <i class="fa-solid fa-home mr-4 text-primary-500 group-hover:scale-110 transition-transform duration-300"></i>
                     <span>Home</span>
                     <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
                 </a>
-                <a href="about.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+                <a href="{% url 'about' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
                     <i class="fa-solid fa-info-circle mr-4 text-teal-500 group-hover:scale-110 transition-transform duration-300"></i>
                     <span>About</span>
                     <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
                 </a>
-              <a href="about.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+              <a href="{% url 'investment' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
     <i class="fa-solid fa-chart-line mr-4 text-teal-500 group-hover:scale-110 transition-transform duration-300"></i>
     <span>Investment</span>
     <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
 </a>
 
-                
+                  
                 <!-- Services Submenu -->
            <div x-data="{ servicesOpen: false }" class="space-y-2">
     <button @click="servicesOpen = !servicesOpen" class="flex items-center w-full px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
@@ -439,23 +454,23 @@
     </button>
 
     <div x-show="servicesOpen" x-transition class="ml-8 space-y-1">
-        <a href="chart.html" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
+        <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
             <i class="fa-solid fa-chart-line mr-3 text-primary-400"></i>
             Portfolio Overview
         </a>
-        <a href="alerts.html" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
+        <a href="https://www.tradingview.com/markets/" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
             <i class="fa-solid fa-bell mr-3 text-blue-400"></i>
             Market Alerts
         </a>
-        <a href="send-money.html" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
+        <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
             <i class="fa-solid fa-arrows-rotate mr-3 text-green-400"></i>
             Buy & Sell Crypto
         </a>
-        <a href="login.html" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
+        <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
             <i class="fa-solid fa-wallet mr-3 text-purple-400"></i>
             Wallet & Payments
         </a>
-        <a href="grants.html" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
+        <a href="{% url 'userprofile:dashboard' %}" class="flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30">
             <i class="fa-solid fa-chart-pie mr-3 text-orange-400"></i>
             Staking & Rewards
         </a>
@@ -463,19 +478,19 @@
 </div>
 
                 
-                <a href="contact.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+                <a href="{% url 'contact' %}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
                     <i class="fa-solid fa-envelope mr-4 text-orange-500 group-hover:scale-110 transition-transform duration-300"></i>
                     <span>Contact</span>
                     <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
                 </a>
                 
                 <!-- Additional Mobile Links -->
-                <a href="apps.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
+                <!-- <a href="apps.html" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/30 dark:hover:to-primary-800/30 hover:shadow-lg hover:translate-x-2 group">
                     <i class="fa-solid fa-mobile-alt mr-4 text-indigo-500 group-hover:scale-110 transition-transform duration-300"></i>
                     <span>Mobile App</span>
                     <i class="fa-solid fa-chevron-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
                 </a>
-                
+                 -->
                 <!-- Enhanced Dark Mode Toggle for Mobile -->
                 <div class="pt-4 mt-4 border-t border-primary-700/50">
                     
@@ -498,7 +513,7 @@
 <section class="relative py-16 lg:py-20 bg-gray-900 overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0">
-        <img src="{% static 'images/Tether-digital-currency.jpg' %}" 
+        <img src="{% static 'images/globeimage.jpg' %}" 
              alt="About WealthNetTrader Background" 
              class="w-full h-full object-cover object-center opacity-70">
         <!-- Teal Overlay -->
@@ -730,7 +745,7 @@
     <!-- Buttons: Always side by side -->
     <div class="flex flex-row flex-wrap justify-center gap-4">
       <!-- Create Wallet Button -->
-      <a href="#"
+      <a href="{% url 'userprofile:dashboard' %}"
          class="inline-flex items-center px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
         <i class="fa-solid fa-wallet mr-3 text-white"></i>
         Create Wallet
@@ -822,16 +837,25 @@
 
 
      <!-- Mobile Fixed Login/Register Buttons -->
+    
+     <!-- Mobile Fixed Login/Register Buttons BOTTOM -->
     <div class="mobile-fixed-buttons">
-        <a href="http://pace-services.com.ng/login" class="flex-1 px-6 py-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl text-primary-600 dark:text-primary-400 font-semibold shadow-lg border border-primary-200 dark:border-primary-700 hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors text-center">
-            <i class="fa-solid fa-sign-in-alt mr-2"></i>
-            Login
-        </a>
-        <a href="http://pace-services.com.ng/register" class="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold shadow-lg transition-colors text-center">
-            <i class="fa-solid fa-user-plus mr-2"></i>
-            Register
-        </a>
-    </div>
+       {% if user.is_authenticated %}
+    <a href="{% url 'userprofile:dashboard' %}" class="flex-1 px-6 py-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl text-primary-600 dark:text-primary-400 font-semibold shadow-lg border border-primary-200 dark:border-primary-700 hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors text-center">
+        <i class="fa-solid fa-user mr-2"></i>
+        {{ user.username }}
+    </a>
+{% else %}
+    <a href="{% url 'userprofile:login' %}" class="flex-1 px-6 py-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl text-primary-600 dark:text-primary-400 font-semibold shadow-lg border border-primary-200 dark:border-primary-700 hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors text-center">
+        <i class="fa-solid fa-sign-in-alt mr-2"></i>
+        Login
+    </a>
+{% endif %}
+
+     <a href="{% url 'userprofile:register' %}" class="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold shadow-lg transition-colors text-center">
+    <i class="fa-solid fa-wallet mr-2"></i>
+    Create Wallet
+</a>
      
      <!-- Additional Scripts -->
      
@@ -1134,7 +1158,61 @@
              }
          };
      </script>
-   
+      <!-- ======== PRELOADER START ======== -->
+<div id="preloader" class="fixed inset-0 bg-gray-950 flex flex-col items-center justify-center z-[9999] transition-opacity duration-700">
+  <div class="flex space-x-2 mb-6">
+    <div class="bar h-8 w-2 rounded-full bg-[#048ace] animate-bar"></div>
+    <div class="bar h-10 w-2 rounded-full bg-[#04b3ff] animate-bar delay-100"></div>
+    <div class="bar h-6 w-2 rounded-full bg-[#048ace] animate-bar delay-200"></div>
+    <div class="bar h-12 w-2 rounded-full bg-[#04b3ff] animate-bar delay-300"></div>
+    <div class="bar h-8 w-2 rounded-full bg-[#048ace] animate-bar delay-400"></div>
+  </div>
+
+  <h1 class="text-xl sm:text-2xl font-bold text-[#048ace] tracking-wide">WealthNetTrader</h1>
+</div>
+<!-- ======== PRELOADER END ======== -->
+
+<!-- ======== STYLES ======== -->
+<style>
+  /* Smooth fadeout */
+  #preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Bar animation */
+  @keyframes barUpDown {
+    0%, 100% {
+      transform: scaleY(0.4);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-bar {
+    animation: barUpDown 1s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+</style>
+
+<!-- ======== SCRIPT ======== -->
+<script>
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    setTimeout(() => {
+      preloader.classList.add("fade-out");
+      setTimeout(() => preloader.style.display = "none", 700);
+    }, 700); // Slight delay before fade
+  });
+</script>
 
 </body>
 </html>
